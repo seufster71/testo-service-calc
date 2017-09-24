@@ -38,7 +38,7 @@ public class CalcSvcImpl implements ServiceProcessor, CalcSvc {
 			if (msadd != null && !msadd.isEmpty()) {
 				Number number = NumberFormat.getCurrencyInstance(Locale.US).parse(msadd);
 				
-				BigDecimal x = new BigDecimal(msadd);
+				BigDecimal x = new BigDecimal(number.toString());
 				BigDecimal y = x.add(new BigDecimal(20));
 				
 				response.getParams().put("msaddresult", y.setScale(2).toString());

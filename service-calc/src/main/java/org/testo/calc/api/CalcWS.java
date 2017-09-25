@@ -36,10 +36,15 @@ public class CalcWS {
 				case "CALC_SVC":
 					className = "CalcSvc";
 					break;
+				default:
+					ErrorMsg.addMsg(response, GlobalConstant.WARN, "The service does not exist!");
+					break;
 			}
-			ServiceProcessor processor = (ServiceProcessor) context.getBean(className);
-			
-			processor.process(request, response);
+			if (!"".equals(className)) {
+				ServiceProcessor processor = (ServiceProcessor) context.getBean(className);
+				
+				processor.process(request, response);
+			}
 		
 		} catch (ValidationException e) {
 			// Validation has occured need to update response
